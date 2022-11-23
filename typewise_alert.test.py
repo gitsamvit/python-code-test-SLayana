@@ -13,10 +13,10 @@ class TypewiseTest(unittest.TestCase):
     def test_infers_breach_as_per_limits2(self):
         self.assertTrue(typewise_alert.infer_breach(50, 50, 50) == "NORMAL")
 
-    def test_send_to_email_low(self):
-        self.assertFalse(
-            typewise_alert.send_to_email("TOO_LOW") == ""
-        )
+#     def test_send_to_email_low(self):
+#         self.assertFalse(
+#             typewise_alert.send_to_email("TOO_LOW") == ""
+#         )
 
 #     def test_send_to_email_high(self):
 #         self.assertFalse(
