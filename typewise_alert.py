@@ -1,44 +1,67 @@
-cooling_type = {
-    "passive_cooling": {"lowerlimit": 0, "upperlimit": 35},
-    "high_active_cooling": {"lowerlimit": 0, "upperlimit": 45},
-    "med_active_cooling": {"lowerlimit": 0, "upperlimit": 40},
-}
+class CoolingType:
+    def __init__(self, methodName) -> None:
+        self.lowerlimit = 0
+        return methodName()
 
-breach_type = {"normal": "NORMAL", "too_high": "TOO_HIGH", "too_low": "TOO_LOW"}
+    def passive_cooling(self):
+        self.upperlimit = 35
+        return (self.lowerlimit, self.upperlimit)
+
+    def high_active_cooling(self):
+        self.upperlimit = 45
+        return (self.lowerlimit, self.upperlimit)
+
+    def med_active_cooling(self):
+        self.upperlimit = 40
+        return (self.lowerlimit, self.upperlimit)
+
+
+class BreachType:
+    def __init__(self) -> None:
+        pass
+
+    def normal():
+        return "the temperature is normal"
+
+    def too_low():
+        return "the temperature is too low"
+
+    def too_high():
+        return "the temperature is too high"
+
+
+class SendEmailOrController:
+    def __init__(self) -> None:
+        pass
+
+    def send_to_controller(BreachType):
+        header = 0xFEED
+        print(f"{header}, {BreachType}")
+
+    def send_to_email(to_recipient, BreachType):
+        print(f"To: { to_recipient }")
+        print(f"Hi, { BreachType }")
 
 
 def infer_breach(value, lowerLimit, upperLimit):
+    bt = BreachType()
     if value < lowerLimit:
-        return breach_type["too_low"]
+        return bt.too_low
     if value > upperLimit:
-        return breach_type["too_high"]
-    return breach_type["normal"]
+        return bt.too_high
+    return bt.normal
 
 
 def classify_temperature_breach(coolingType, temperatureInC):
-    lowerLimit = cooling_type[coolingType]["lowerlimit"]
-    upperLimit = cooling_type[coolingType]["upperlimit"]
-    return infer_breach(temperatureInC, lowerLimit, upperLimit)
+    lowerLimit, upperlimit = CoolingType(coolingType)
+    return infer_breach(temperatureInC, lowerLimit, upperlimit)
 
 
-def check_and_alert(alertTarget, batteryChar, temperatureInC):
-    breachType = classify_temperature_breach(batteryChar, temperatureInC)
-    if alertTarget == "TO_CONTROLLER":
-        send_to_controller(breachType)
-    elif alertTarget == "TO_EMAIL":
-        send_to_email(breachType)
-
-
-def send_to_controller(breachType):
-    header = 0xFEED
-    print(f"{header}, {breachType}")
-
-
-def send_to_email(breachType):
+def check_and_alert(alertTarget, coolingType, temperatureInC):
+    sec = SendEmailOrController()
     recepient = "a.b@c.com"
-    if breachType == "TOO_LOW":
-        print(f"To: {recepient}")
-        print("Hi, the temperature is too low")
-    elif breachType == "TOO_HIGH":
-        print(f"To: {recepient}")
-        print("Hi, the temperature is too high")
+    breachType = classify_temperature_breach(coolingType, temperatureInC)
+    if alertTarget == "TO_CONTROLLER":
+        sec.send_to_controller(breachType)
+    elif alertTarget == "TO_EMAIL":
+        sec.send_to_email(recepient, breachType)
