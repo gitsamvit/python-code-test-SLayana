@@ -31,7 +31,7 @@ class TypewiseTest(unittest.TestCase):
         )
     def test_check_and_alert_email_low(self):
         self.assertFalse(
-            typewise_alert.check_and_alert("TO_EMAIL", "passive_cooling", 20)
+            typewise_alert.check_and_alert("TO_EMAIL", "passive_cooling", -2)
             == ""
         )
 
