@@ -18,15 +18,20 @@ class TypewiseTest(unittest.TestCase):
             typewise_alert.send_to_email("TOO_LOW") == ""
         )
 
-    def test_send_to_email_high(self):
-        self.assertFalse(
-            typewise_alert.send_to_email("TOO_HIGH")
-            == ""
-        )
+#     def test_send_to_email_high(self):
+#         self.assertFalse(
+#             typewise_alert.send_to_email("TOO_HIGH")
+#             == ""
+#         )
     
     def test_check_and_alert_email(self):
         self.assertFalse(
             typewise_alert.check_and_alert("TO_EMAIL", "high_active_cooling", 200)
+            == ""
+        )
+    def test_check_and_alert_email_low(self):
+        self.assertFalse(
+            typewise_alert.check_and_alert("TO_EMAIL", "passive_cooling", 20)
             == ""
         )
 
