@@ -32,7 +32,7 @@ class TypewiseTest(unittest.TestCase):
 
     def test_check_and_alert(self):
         self.assertFalse(
-            typewise_alert.check_and_alert("TO_CONTROLLER", "med_active_cooling", 200)
+            typewise_alert.check_and_alert("TO_CONTROLLER", "med_active_cooling", 20)
             == ""
         )
 
