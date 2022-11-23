@@ -14,13 +14,13 @@ class TypewiseTest(unittest.TestCase):
 
     def test_send_to_email_low(self):
         self.assertTrue(
-            typewise_alert.send_to_email("TOO_LOW") == "Hi, the temperature is too low"
+            typewise_alert.send_to_email("TOO_LOW") == "To: a.b@c.com\nHi, the temperature is too low"
         )
 
     def test_send_to_email_high(self):
         self.assertTrue(
             typewise_alert.send_to_email("TOO_HIGH")
-            == "Hi, the temperature is too high"
+            == "To: a.b@c.com\nHi, the temperature is too high"
         )
     
     def test_check_and_alert(self):
