@@ -18,12 +18,7 @@ class TypewiseTest(unittest.TestCase):
             typewise_alert.infer_breach(50, 50, 50) == "the temperature is normal"
         )
 
-    def test_check_and_alert(self):
-        ct = CoolingType()
-        self.assertTrue(
-            typewise_alert.check_and_alert("TO_EMAIL", ct.high_active_cooling, 200)
-            == "the temperature is too high"
-        )
+
 
 
 if __name__ == "__main__":
