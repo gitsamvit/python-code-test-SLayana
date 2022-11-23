@@ -23,11 +23,11 @@ class TypewiseTest(unittest.TestCase):
 #             == "To: a.b@c.com\nHi, the temperature is too high"
 #         )
     
-    def test_check_and_alert(self):
-        self.assertTrue(
-            typewise_alert.check_and_alert("TO_EMAIL", "high_active_cooling", 200)
-            == "To: a.b@c.com \n Hi, the temperature is too high"
-        )
+#     def test_check_and_alert(self):
+#         self.assertTrue(
+#             typewise_alert.check_and_alert("TO_EMAIL", "high_active_cooling", 200)
+#             == "To: a.b@c.com \n Hi, the temperature is too high"
+#         )
 
 
 if __name__ == "__main__":
